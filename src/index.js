@@ -32,6 +32,13 @@ app.use("/api/modules", require("./routes/modules"));
 app.use("/api/videos", require("./routes/videos"));
 
 // Health check
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is running",
+  });
+});
+// Health check
 app.get("/api/health", (req, res) => {
   res.status(200).json({
     success: true,
