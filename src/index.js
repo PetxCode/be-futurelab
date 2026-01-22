@@ -20,7 +20,12 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is running",
+  });
+});
 // Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/users", require("./routes/users"));
@@ -32,12 +37,7 @@ app.use("/api/modules", require("./routes/modules"));
 app.use("/api/videos", require("./routes/videos"));
 
 // Health check
-app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "Server is running",
-  });
-});
+
 // Health check
 app.get("/api/health", (req, res) => {
   res.status(200).json({
